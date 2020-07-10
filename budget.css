@@ -1,0 +1,45 @@
+body{
+    background-color: white;
+}
+.whole{
+    background-color: lavender;
+    width: 800px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    border-radius: 8px;
+    box-shadow:4px 4px 6px 6px black;
+}
+.gridContainer{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+.enterBudget{
+    border: 2px solid green;
+    border-radius: 5px;
+    width: 260px;
+    height: 100px;
+    padding: 10px 10px;
+    margin:10px 15px;
+    line-height: 2;
+}
+.expense{
+    border: 2px solid red;
+    border-radius: 5px;
+    width: 260px;
+    height: 160px;
+    padding: 10px 10px;
+    margin:0  15px;
+    line-height:2;
+}
+button{
+    width: 100px;
+    height: 30px;
+    box-shadow:1px 1px 1px 1px black;
+}
+.sameForm{
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+}
