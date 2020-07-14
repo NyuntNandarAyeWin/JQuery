@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script>
+        var foodList=[];
+        var catList=[];
+        
+        
+        $(document).ready(function(){
+            $("#addFood").click(function(){
+                var iname=$("#item_name").val();
+                var iprice=$("#item_price").val();
+                var iurl=$("#item_url").val();
+                var idesc=$("#item_desc").val();
+                //var icat=$("#item_cat").val();
+                var food={itemName:iname,itemPrice:iprice,itemUrl:iurl,itemDesc:idesc,itemCat:icat};
+                foodList.push(food);
+                var json_string= JSON.stringify(foodList);
+                localStorage.setItem("food_list",json_string);
+                //var jobj=JSON.parse(test_json);
+                alert(json_string);
+                $("#result").text(json_string);
+            });
+            $("#btnshow").click(function(){
+               var food_json=localStorage.getItem("food_list");
+               foodList=JSON.parse(food_json);
+               alert(foodList.length);
+            });
+
+            if(localStorage.getItem("category_list")!=undefined){
+			    catList=JSON.parse(localStorage.getItem("category_list"));
+                catList.forEach(function(val,i){
+                    $("#item_cat").append('<option>'+val.catName+'</option>');
+            });
+		}
+        });
+    </script>
+
+</head>
+<body>
+    <label for="item_name">Enter New Item Name : </label>&nbsp;&nbsp;
+    <input type="text" id="item_name"><br>
+    <label for="item_price">Enter New Item Price : </label>&nbsp;&nbsp;
+    <input type="text" id="item_price"><br>
+    <label for="item_url">Enter New Item Image Url : </label>&nbsp;&nbsp;
+    <input type="text" id="item_url"><br>
+    <label for="item_desc">Enter New Item Description : </label>&nbsp;&nbsp;
+    <input type="text" id="item_desc"><br>
+    <label for="item_cat">Enter New Item Category : </label>&nbsp;&nbsp;
+    <select id="item_cat" style="width: 100px;">
+    </select><br>
+    <button type="button" id="addFood">Add</button>
+    <button type="button" id="btnshow">Show</button><br><br>
+    <a href="FoodMainPage.html">Home</a>
+
+</body>
+</html>
